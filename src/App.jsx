@@ -1,23 +1,25 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
 import './App.css'
-import Footer from './components/Footer'
+import NavBar from './layout/NavBar';
+import Home from './pages/Home';
+import Empresa from './pages/Empresa';
+import Contato from './pages/Contato';
+import Footer from './layout/Footer';
 
 function App() {
 
   return (
-    <div className='h-screen flex flex-col'>
-      <header className='bg-zinc-800 p-6'>
-        header
-      </header>
-      <div className='flex flex-1'>
-        <aside className=' bg-zinc-950 w-64 p-6'>
-          sidebar
-        </aside>
-        <main className=' bg-zinc-700 flex-1 p-6'>
-          main
-        </main>
-      </div>
+    <Router>
+      <NavBar/>
+      <Routes>
+        <Route exact path='/' element={<Home/> }></Route>
+        <Route exact path='/empresa' element={<Empresa/>}></Route>
+        <Route exact path='/contato' element={<Contato/>}></Route>
+      </Routes>
       <Footer/>
-    </div>
+    </Router>
   )
 }
 
